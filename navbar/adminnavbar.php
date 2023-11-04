@@ -1,0 +1,46 @@
+<?php
+@include 'config.php';
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../KTX/css/admin_navbar.css">
+
+</head>
+
+<body>
+    <ul>
+        <?php
+        if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
+            echo '<li><a href="../../KTX/admin_page.php">Trang Chủ (Admin)</a></li>';
+        } else {
+            echo '<li><a href="../../KTX/admin_page.php>Trang Chủ (User)</a></li>';
+        }
+        ?>
+        <li><a href="">Quản lý người dùng</a>
+            <ul class="navbar-dropdown">
+                <li><a href="../AccountManagement/AccountManagement.php">Thông tin tài khoản</a></li>
+                <li><a href="../register_form.php">Thêm tài khoản mới</a></li>
+            </ul>
+        </li>
+        <li><a href="">Quản lý KTX</a>
+            <ul class="navbar-dropdown">
+                <li><a href="../../KTX/room_details/room.php">Thêm Phòng</a></li>
+            </ul>
+        <li><a href="" id="test">Thanh Toán</a>
+        <li><a href="javascript:void(0)"><?php echo $_SESSION['admin_name']; ?></a>
+            <ul class="user-menu">
+                <li><a href="../../KTX/admin_edit_profile.php">Thông tin tài khoản</a></li>
+                <li><a href="../../KTX/logout.php">Đăng xuất</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

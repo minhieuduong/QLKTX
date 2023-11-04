@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style: none;
+    background-color: #333;
+    display: flex;
+    justify-content: flex-end;
+}
+
+ul li {
+    display: inline-block;
+    position: relative;
+}
+
+ul li a {
+    display: block;
+    padding: 20px 25px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+ul li ul.navbar-dropdown {
+    width: 100%;
+    background: #333;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+ul li a:hover {
+    background: green;    
+}
+
+ul li:hover ul.navbar-dropdown {
+    display: block;
+}
+
+.user-dropdown:hover .user-dropdown {
+    display: block;
+}
+
+ul li ul.user-menu {
+    width: 100%;
+    background: #333;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+li.user-menu {
+    margin-left: auto;
+}
+
+
+ul li:hover ul.user-menu {
+    display: block;
+}
+
+.user-menu:hover .user-menu {
+    display: block;
+}
