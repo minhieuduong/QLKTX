@@ -37,7 +37,7 @@ if (!$result) {
     <title>Quản lý tài khoản</title>
 
     <!-- custom css file link -->
-    <link rel="stylesheet" href="../AccountManagement/style.css">
+    <link rel="stylesheet" href="../css/accountmanagement.css">
 </head>
 
 <body>

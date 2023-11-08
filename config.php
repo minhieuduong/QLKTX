@@ -6,3 +6,7 @@ $conn  = mysqli_connect(
     '',
     'user_db'
 );
+
+if (!$conn) {
+    die("Kết nối thất bại: " . mysqli_connect_error());
+}

@@ -20,18 +20,19 @@
         if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
             echo '<li><a href="../../KTX/admin_page.php">Trang Chủ (Admin)</a></li>';
         } else {
-            echo '<li><a href="../../KTX/admin_page.php>Trang Chủ (User)</a></li>';
+            echo '<li><a href="../../KTX/user_page.php>Trang Chủ (User)</a></li>';
         }
         ?>
         <li><a href="">Quản lý người dùng</a>
             <ul class="navbar-dropdown">
-                <li><a href="../AccountManagement/AccountManagement.php">Thông tin tài khoản</a></li>
-                <li><a href="../register_form.php">Thêm tài khoản mới</a></li>
+                <li><a href="../../KTX/AccountManagement/AccountManagement.php">Danh sách người dùng</a></li>
+                <li><a href="../../KTX/register_form.php">Thêm tài khoản mới</a></li>
             </ul>
         </li>
         <li><a href="">Quản lý KTX</a>
             <ul class="navbar-dropdown">
-                <li><a href="../../KTX/room_details/room.php">Thêm Phòng</a></li>
+                <li><a href="../../KTX/room_details/list_room.php">Danh sách Phòng</a></li>
+                <li><a href="../../KTX/room_details/add_room.php">Thêm Phòng</a></li>
             </ul>
         <li><a href="" id="test">Thanh Toán</a>
         <li><a href="javascript:void(0)"><?php echo $_SESSION['admin_name']; ?></a>

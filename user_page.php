@@ -27,6 +27,8 @@ if (!isset($_SESSION['user_name'])) {
 <body>
 
     <?php include 'navbar/usernavbar.php'; ?>
+    <br>
+    <?php include 'room_details.php'; ?>
 
     <div class="container">
 

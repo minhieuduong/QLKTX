@@ -16,7 +16,7 @@ if (mysqli_num_rows($resultUser) > 0) {
     $userCount = 0;
 }
 
-$selectRoomQuery = "SELECT COUNT(room_number) as roomCount FROM room_form";
+$selectRoomQuery = "SELECT COUNT(room_id) as roomCount FROM room_form";
 $resultRoom = mysqli_query($conn, $selectRoomQuery);
 
 if (!$resultRoom) {
@@ -57,7 +57,7 @@ if (mysqli_num_rows($resultRoom) > 0) {
         <div class="room-dashboard">
             <h3>SỐ PHÒNG CÓ SẴN</h3>
             <p>Số phòng: <?php echo $roomCount; ?></p>
-            <a href="RoomManagement/RoomManagement.php" class="dashboard-link">Quản lý phòng</a>
+            <a href="room_details/list_room.php" class="dashboard-link">Quản lý phòng</a>
         </div>
     </div>
 
