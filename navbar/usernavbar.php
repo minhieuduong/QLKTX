@@ -20,10 +20,10 @@
         if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
             echo '<li><a href="admin_page.php">Trang Chủ (Admin)</a></li>';
         } else {
-            echo '<li><a href="user_page.php">Trang Chủ (User)</a></li>';
+            echo '<li><a href="../user_page.php">Trang Chủ (User)</a></li>';
         }
         ?>
-        <li><a href="book.php" id="test">Đăng ở Ký túc xá</a>
+        <li><a href="../../KTX/register/room_details.php" id="test">Đăng ở Ký túc xá</a>
         <li><a href="javascript:void(0)"><?php echo $_SESSION['user_name']; ?></a>
             <ul class="user-menu">
                 <li><a href="../../KTX/show.php">View User</a></li>

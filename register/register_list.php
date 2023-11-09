@@ -2,7 +2,7 @@
 @include '../config.php';
 session_start();
 
-$query = "SELECT * FROM room_form";
+$query = "SELECT * FROM register";
 $result = mysqli_query($conn, $query);
 
 ?>
@@ -27,7 +27,8 @@ $result = mysqli_query($conn, $query);
         <a href="add_room.php">Thêm phòng</a>
         <table>
   <tr>
-    <th>Số thứ tự</th>
+    <th>STT</th>
+    <th></th>
     <th>Mã phòng</th>
     <th>Loại phòng</th>
     <th>Sức chứa</th>
@@ -38,12 +39,13 @@ $result = mysqli_query($conn, $query);
  <?php
    while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
+    echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['room_id'] . "</td>";
-    echo "<td>" . $row['room_number'] . "</td>";
-    echo "<td>" . $row['room_type'] . "</td>";
-    echo "<td>" . $row['room_capacity'] . "</td>";
-    echo "<td>" . $row['room_description'] . "</td>";
-    echo "<td>" . $row['room_price'] . "</td>";
+    echo "<td>" . $row['user_id'] . "</td>";
+    echo "<td>" . $row['full_name'] . "</td>";
+    echo "<td>" . $row['student_id'] . "</td>";
+    echo "<td>" . $row['phone'] . "</td>";
+    echo "<td>" . $row['email'] . "</td>";
     echo "<td><a href='edit_room.php?id=" . $row['room_id'] . "'>Edit</a>
     <a href='delete_room.php?id=" . $row['room_id'] . "'>Delete</a>
     </td>";

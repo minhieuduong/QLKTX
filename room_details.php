@@ -1,58 +1,93 @@
 <?php
-@include '../config.php';
+@include '../KTX/config.php';
+session_start();
 
-if (isset($_GET['room_id'])) {
-    $room_id = mysqli_real_escape_string($conn, $_GET['room_id']);
-    
-    // Truy vấn để lấy thông tin phòng dựa trên room_id
-    $selectQuery = "SELECT * FROM room_form WHERE room_id = '$room_id'";
-    $result = mysqli_query($conn, $selectQuery);
-    $roomData = mysqli_fetch_assoc($result);
-} else {
-    // Xử lý trường hợp không có room_id
-    echo "ID phòng không hợp lệ.";
-    exit();
-}
+$room_type = '4 Giường';
+$room_capacity = '4';
+$room_price = '300.000đ';
+$room_description = 'Phòng cho 4 người ở';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết phòng</title>
-
-    <link rel="stylesheet" href="../css/room.css";>
-    <style>
-        /* Điều chỉnh chiều rộng của container */
-        .room-container {
-            width: 1000px;
-            margin: 0 auto; /* Canh giữa khung */
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="../KTX/css/details.css">
 </head>
-
 <body>
-    <?php include '../../KTX/navbar/adminnavbar.php'; ?>
-    <div class="dashboard-container">
-        <h3>Danh sách phòng</h3>
-        <br>
-        <a href="add_room.php">Thêm phòng</a>
-        <div class="room-container"> <!-- Thêm container cho mỗi phòng -->
-            <div class="room-details">
-                <p><strong>Mã phòng:</strong> <?php echo $roomData['room_number']; ?></p>
-                <p><strong>Loại phòng:</strong> <?php echo $roomData['room_type']; ?></p>
-                <p><strong>Sức chứa:</strong> <?php echo $roomData['room_capacity']; ?></p>
-                <p><strong>Mô tả phòng:</strong> <?php echo $roomData['room_description']; ?></p>
-            </div>
-            <br>
-            <form action="" method="post">
-                <input type="submit" name="register" value="Đăng ký chọn phòng" class="form-btn">
-            </form>
-        </div>
-    </div>
-</body>
+<?php include 'navbar/usernavbar.php'; ?>
+<h1>THÔNG TIN CÁC PHÒNG CÓ TRONG KÝ TÚC XÁ</h1>
 
+    <main>
+        <div class="card">
+            <div class="image">
+                <img src="images/2beds.jpg" alt="">
+            </div>
+            <div class ="caption">
+                <p class="room_type">Loại phòng: <?php echo $room_type; ?></p>
+                <p class="room_capacity">Sức chứa: <?php echo $room_capacity; ?></p>
+                <p class="room_description">Mô tả: <?php echo $room_description; ?></p>
+                <p class="room_price"><b>Price: <?php echo $room_price; ?></b></p>
+
+            </div>
+            <button class="add">Đăng ký</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="images/4beds.jpg" alt="">
+            </div>
+            <div class ="caption">
+                <p class="room_type">Loại phòng: <?php echo $room_type; ?></p>
+                <p class="room_capacity">Sức chứa: <?php echo $room_capacity; ?></p>
+                <p class="room_description">Mô tả: <?php echo $room_description; ?></p>
+                <p class="room_price"><b>Price: <?php echo $room_price; ?></b></p>
+
+
+            </div>
+            <button class="add">Đăng ký</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="images/8beds.jpg" alt="">
+            </div>
+            <div class ="caption">
+                <p class="room_type">Loại phòng: <?php echo $room_type; ?></p>
+                <p class="room_capacity">Sức chứa: <?php echo $room_capacity; ?></p>
+                <p class="room_description">Mô tả: <?php echo $room_description; ?></p>
+                <p class="room_price"><b>Price: <?php echo $room_price; ?></b></p>
+
+
+            </div>
+            <button class="add">Đăng ký</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="images/16beds.jpg" alt="">
+            </div>
+            <div class ="caption">
+                <p class="room_type">Loại phòng: <?php echo $room_type; ?></p>
+                <p class="room_capacity">Sức chứa: <?php echo $room_capacity; ?></p>
+                <p class="room_description">Mô tả: <?php echo $room_description; ?></p>
+                <p class="room_price"><b>Price: <?php echo $room_price; ?></b></p>
+
+
+            </div>
+            <button class="add">Đăng ký</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="images/24beds.jpg" alt="">
+            </div>
+            <div class ="caption">
+                <p class="room_type">Loại phòng: <?php echo $room_type; ?></p>
+                <p class="room_capacity">Sức chứa: <?php echo $room_capacity; ?></p>
+                <p class="room_description">Mô tả: <?php echo $room_description; ?></p>
+                <p class="room_price"><b>Price: <?php echo $room_price; ?></b></p>
+            </div>
+            <button class="add">Đăng ký</button>
+        </div>
+    </main>
+</body>
+<?php include '../KTX/footer.php'; ?>
 </html>

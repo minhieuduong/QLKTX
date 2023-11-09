@@ -28,7 +28,6 @@ if (!isset($_SESSION['user_name'])) {
 
     <?php include 'navbar/usernavbar.php'; ?>
     <br>
-    <?php include 'room_details.php'; ?>
 
     <div class="container">
 
@@ -42,5 +41,5 @@ if (!isset($_SESSION['user_name'])) {
     </div>
 
 </body>
-
+<?php include '../KTX/footer.php'; ?>
 </html>

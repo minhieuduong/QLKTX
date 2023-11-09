@@ -14,9 +14,10 @@ if (isset($_POST['submit'])) {
     $room_capacity = mysqli_real_escape_string($conn, $_POST['room_capacity']);
     $room_description = mysqli_real_escape_string($conn, $_POST['room_description']);
     $room_number = mysqli_real_escape_string($conn, $_POST['room_number']);
+    $room_price = mysqli_real_escape_string($conn, $_POST['room_price']);
 
     // Thêm thông tin phòng vào cơ sở dữ liệu
-    $insertQuery = "INSERT INTO room_form (room_type, room_capacity, room_description, room_number) VALUES ('$room_type', '$room_capacity', '$room_description', '$room_number')";
+    $insertQuery = "INSERT INTO room_form (room_type, room_capacity, room_description, room_number, room_price) VALUES ('$room_type', '$room_capacity', '$room_description', '$room_number', '$room_price')";
     
     if (mysqli_query($conn, $insertQuery)) {
         $successMessage = "Thông tin phòng đã được thêm thành công.";
@@ -59,6 +60,7 @@ if (isset($_POST['submit'])) {
             <input type="text" name="room_type" required placeholder="Loại phòng">
             <input type="number" name="room_capacity" required placeholder="Sức chứa">
             <input type="text" name="room_number" required placeholder="Mã phòng">
+            <input type="text" name="room_price" required placeholder="Giá phòng">
             <textarea name="room_description" required placeholder="Mô tả phòng"></textarea>
             <input type="submit" name="submit" value="Thêm phòng" class="form-btn">
         </form>

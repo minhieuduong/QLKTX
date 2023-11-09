@@ -16,9 +16,10 @@ if (isset($_POST['submit'])) {
     $room_type = mysqli_real_escape_string($conn, $_POST['room_type']);
     $room_capacity = mysqli_real_escape_string($conn, $_POST['room_capacity']);
     $room_description = mysqli_real_escape_string($conn, $_POST['room_description']);
+    $room_price = mysqli_real_escape_string($conn, $_POST['room_price']);
     $room_number = mysqli_real_escape_string($conn, $_POST['room_number']);
 
-    $updateQuery = "UPDATE room_form SET room_type = '$room_type', room_capacity = '$room_capacity', room_description = '$room_description', room_number = '$room_number' WHERE room_id = '$room_id'";
+    $updateQuery = "UPDATE room_form SET room_type = '$room_type', room_price = '$room_price', room_capacity = '$room_capacity', room_description = '$room_description', room_number = '$room_number' WHERE room_id = '$room_id'";
     if (mysqli_query($conn, $updateQuery)) {
         header('location: list_room.php'); // Thay đổi thành trang danh sách phòng của bạn
         exit();
@@ -55,6 +56,8 @@ if (isset($_POST['submit'])) {
             <input type="text" name="room_type" value="<?php echo isset($roomData['room_type']) ? $roomData['room_type'] : ''; ?>">
             <label for="room_capacity">Sức chứa:</label>
             <input type="number" name="room_capacity" value="<?php echo isset($roomData['room_capacity']) ? $roomData['room_capacity'] : ''; ?>">
+            <label for="room_price">Giá phòng:</label>
+            <input type="text" name="room_price" value="<?php echo isset($roomData['room_price']) ? $roomData['room_price'] : ''; ?>">
             <label for="room_description">Thông tin phòng:</label>
             <textarea name="room_description"><?php echo isset($roomData['room_description']) ? $roomData['room_description'] : ''; ?></textarea>
             <input type="submit" name="submit" value="Cập nhật phòng" class="form-btn">
