@@ -21,6 +21,7 @@ if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $user_name = $row['name'];
     $user_email = $row['email'];
+    $user_password = $row['password'];
     $user_phonenumber = $row['phonenumber'];
 } else {
     die("Không tìm thấy thông tin người dùng.");

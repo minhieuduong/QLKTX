@@ -14,6 +14,7 @@ if (isset($_POST['room_id'])) {
     $id_user = $_SESSION['user_id'];
     $id_phong = $_POST['room_id'];
 
+
     if ($conn->connect_error) {
         die("Kết nối không thành công: " . $conn->connect_error);
     }
@@ -23,7 +24,7 @@ if (isset($_POST['room_id'])) {
     $result_room = $conn->query($sql_room);
     $row_room = $result_room->fetch_assoc();
 
-// Kiểm tra nếu có thông tin phòng
+    // Kiểm tra nếu có thông tin phòng
     if ($result_room->num_rows > 0) {
         $room_number = $row_room['room_number'];
         $room_capacity = $row_room['room_capacity'];
@@ -39,19 +40,17 @@ if (isset($_POST['room_id'])) {
         $room_price = mysqli_real_escape_string($conn, $_POST['room_price']);
         $room_number = mysqli_real_escape_string($conn, $_POST['room_number']);
         $room_capacity = mysqli_real_escape_string($conn, $_POST['room_capacity']);
-        
-
+    
         $sql = "INSERT INTO register (user_id, room_id, full_name, student_id, phone, email, room_price, room_number, room_capacity) 
                 VALUES ('$id_user', '$id_phong', '$full_name', '$student_id', '$phone', '$email','$room_price','$room_number','$room_capacity')";
-
+    
         if ($conn->query($sql) === TRUE) {
             echo "Đăng ký thành công!";
             header('location: user_page.php');
         } else {
             echo "Lỗi: " . $sql . "<br>" . $conn->error;
         }
-
-
+    
         $conn->close();
     } else {
         echo '<div class = "container-form"></div>';

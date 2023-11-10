@@ -27,3 +27,13 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
     margin-left: 10px;
 }
+
+.approve-dashboard {
+    border-radius: 8px;
+    width: 350px;
+    background-color: #66b3ff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    margin-left: 10px;
+}
