@@ -5,9 +5,6 @@
 $selectUserQuery = "SELECT COUNT(id) as userCount FROM user_form";
 $resultUser = mysqli_query($conn, $selectUserQuery);
 
-if (!$resultUser) {
-    die("Lỗi truy vấn người dùng: " . mysqli_error($conn));
-}
 
 if (mysqli_num_rows($resultUser) > 0) {
     $rowUser = mysqli_fetch_assoc($resultUser);
@@ -21,9 +18,6 @@ if (mysqli_num_rows($resultUser) > 0) {
 $selectRoomQuery = "SELECT COUNT(room_id) as roomCount FROM room_form";
 $resultRoom = mysqli_query($conn, $selectRoomQuery);
 
-if (!$resultRoom) {
-    die("Lỗi truy vấn phòng: " . mysqli_error($conn));
-}
 
 if (mysqli_num_rows($resultRoom) > 0) {
     $rowRoom = mysqli_fetch_assoc($resultRoom);
@@ -36,9 +30,6 @@ if (mysqli_num_rows($resultRoom) > 0) {
 $selectApproveQuery = "SELECT COUNT(id) as approveCount FROM register";
 $resultApprove = mysqli_query($conn, $selectApproveQuery);
 
-if (!$resultApprove) {
-    die("Lỗi truy vấn: " . mysqli_error($conn));
-}
 
 if (mysqli_num_rows($resultApprove) > 0) {
     $rowApprove = mysqli_fetch_assoc($resultApprove);
@@ -46,6 +37,8 @@ if (mysqli_num_rows($resultApprove) > 0) {
 } else {
     $approveCount = 0;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -81,18 +74,18 @@ if (mysqli_num_rows($resultApprove) > 0) {
             <a href="AccountManagement/AccountManagement.php" class="dashboard-link">Quản lý tài khoản</a>
         </div>
 
+    <div class="approve-dashboard">
+            <h3>ĐƠN DUYỆT</h3>
+            <p><?php echo $approveCount; ?> phòng đã được phê duyệt!</p>
+            <a href="room_details/list_room.php" class="dashboard-link">Quản lý phòng</a>
+        </div>
+
         <div class="room-dashboard">
             <h3>SỐ PHÒNG CÓ SẴN</h3>
             <p>Số phòng: <?php echo $roomCount; ?></p>
             <a href="room_details/list_room.php" class="dashboard-link">Quản lý phòng</a>
         </div>
-
-        <div class="approve-dashboard">
-            <h3>SỐ PHÒNG PHÊ DUYỆT</h3>
-            <p>Số phòng: <?php echo $approveCount; ?></p>
-            <a href="room_details/list_room.php" class="dashboard-link">Quản lý phòng</a>
         </div>
-    </div>
 
 </body>
 
