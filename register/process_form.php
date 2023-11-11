@@ -1,4 +1,63 @@
-<link rel="stylesheet" href="../css/process_form.css">
+<!-- <link rel="stylesheet" href="../css/process_form.css"> -->
+<head>
+    <style>
+.container-form {
+    width: 1200px;
+    margin-top: 100px;
+}
+
+h1 {
+    margin-top: -50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 400px;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.back-btn {
+    display: block;
+    text-align: center;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+    </style>
+</head>
 <?php
 @include_once("../config.php");
 session_start();
@@ -40,10 +99,15 @@ if (isset($_POST['room_id'])) {
         $room_price = mysqli_real_escape_string($conn, $_POST['room_price']);
         $room_number = mysqli_real_escape_string($conn, $_POST['room_number']);
         $room_capacity = mysqli_real_escape_string($conn, $_POST['room_capacity']);
+        $start_time = mysqli_real_escape_string($conn, $_POST['start_time']);
+        $end_time = mysqli_real_escape_string($conn, $_POST['end_time']);
+
+        $start_time = date('d/m/Y', strtotime($start_time));
+        $end_time = date('d/m/Y', strtotime($end_time));
     
-        $sql = "INSERT INTO register (user_id, room_id, full_name, student_id, phone, email, room_price, room_number, room_capacity) 
-                VALUES ('$id_user', '$id_phong', '$full_name', '$student_id', '$phone', '$email','$room_price','$room_number','$room_capacity')";
-    
+        $sql = "INSERT INTO register (user_id, room_id, full_name, student_id, phone, email, room_price, room_number, room_capacity, start_time, end_time) 
+                VALUES ('$id_user', '$id_phong', '$full_name', '$student_id', '$phone', '$email','$room_price','$room_number','$room_capacity','$start_time', '$end_time')";
+        die($sql);
         if ($conn->query($sql) === TRUE) {
             echo "Đăng ký thành công!";
             header('location: user_page.php');
@@ -64,6 +128,8 @@ if (isset($_POST['room_id'])) {
         echo 'Số phòng: <input type="text" name="room_number" value="' . $room_number . '" readonly><br>';
         echo 'Sức chứa: <input type="text" name="room_capacity" value="' . $room_capacity . '" readonly><br>'; 
         echo 'Giá phòng: <input type="text" name="room_price" value="' . $room_price . '" readonly><br>';
+        echo 'Thời gian bắt đầu: <input type="date" name="start_time" required><br>';
+        echo 'Thời gian kết thúc: <input type="date" name="end_time" required><br>';
         echo '<input type="submit" name="submit" value="Xác nhận">';
         echo '<a href ="room_details.php" class="back-btn">Chọn phòng khác</a>';
         echo '</form>';

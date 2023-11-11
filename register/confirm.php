@@ -33,10 +33,13 @@ if (isset($_POST['room_id'])) {
         $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $start_time = mysqli_real_escape_string($conn, $_POST['start_time']);
+        $end_time = mysqli_real_escape_string($conn, $_POST['end_time']);
+        
 
         // Thực hiện truy vấn để chèn dữ liệu vào bảng `register`
-        $sql = "INSERT INTO register (user_id, room_id, full_name, student_id, phone, email, room_price, room_number, room_capacity) 
-                VALUES ('$id_user', '$id_phong', '$full_name', '$student_id', '$phone', '$email', '$room_price', '$room_number','$room_capacity')";
+        $sql = "INSERT INTO register (user_id, room_id, full_name, student_id, phone, email, room_price, room_number, room_capacity, start_time, end_time) 
+                VALUES ('$id_user', '$id_phong', '$full_name', '$student_id', '$phone', '$email', '$room_price', '$room_number','$room_capacity','$start_time', '$end_time')";
 
         if ($conn->query($sql) === TRUE) {
             // Ví dụ: chuyển hướng hoặc hiển thị thông báo

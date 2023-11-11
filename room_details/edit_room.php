@@ -47,6 +47,9 @@ if (isset($_POST['submit'])) {
     <div class="dashboard-container">
         <h3>CHỈNH SỬA THÔNG TIN PHÒNG</h3>
         <br>
+        <a href="../AccountManagement/AccountManagement.php">Danh sách phòng</a>
+        <br>
+        <br>
         <form action="" method="post">
             <label for="room_id">Số thứ tự:</label>
             <input type="text" name="room_id" value="<?php echo isset($roomData['room_id']) ? $roomData['room_id'] : ''; ?>" readonly>

@@ -34,15 +34,12 @@ if (isset($_POST['submit'])) {
     $phonenumber = mysqli_real_escape_string($conn, $_POST['phonenumber']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    // Nếu có, mã hóa mật khẩu mới
     if (!empty($password)) {
         $password = md5($password);
     }
 
-    // Tạo câu lệnh SQL cập nhật thông tin
     $updateQuery = "UPDATE user_form SET name='$name',";
 
-    // Thêm mật khẩu vào câu lệnh nếu có
     if (!empty($password)) {
         $updateQuery .= " password='$password',";
     }

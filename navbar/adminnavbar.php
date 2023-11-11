@@ -34,7 +34,7 @@
                 <li><a href="../../KTX/room_details/list_room.php">Danh sách Phòng</a></li>
                 <li><a href="../../KTX/room_details/add_room.php">Thêm Phòng</a></li>
             </ul>
-        <li><a href="../KTX/register/register_list.php" id="test">Phê duyệt</a>
+        <li><a href="../../KTX/register/register_list.php" id="test">Phê duyệt</a>
         <li><a href="javascript:void(0)"><?php echo $_SESSION['admin_name']; ?></a>
             <ul class="user-menu">
                 <li><a href="../../KTX/admin_edit_profile.php">Thông tin tài khoản</a></li>

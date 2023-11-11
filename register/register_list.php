@@ -34,6 +34,8 @@ $result = mysqli_query($conn, $query);
     <th>Mã phòng</th>
     <th>Sức chứa</th>
     <th>Giá phòng</th>
+    <th>Bắt đầu</th>
+    <th>Kết thúc</th>
     <th>Trạng thái</th>
     <th>Chức năng</th>
   </tr>
@@ -48,6 +50,8 @@ $result = mysqli_query($conn, $query);
     echo "<td>" . $row['room_number'] . "</td>";
     echo "<td>" . $row['room_capacity'] . "</td>";
     echo "<td>" . $row['room_price'] . "</td>";
+    echo "<td>" . $row['start_time'] . "</td>";
+    echo "<td>" . $row['end_time'] . "</td>";
     echo "<td>";
     if ($row['status'] == 0) {
         echo "Chưa duyệt";
@@ -59,7 +63,7 @@ $result = mysqli_query($conn, $query);
         echo "Không xác định";
     }
     echo "</td>";
-    echo "<td><a href='accept.php?id=" . $row['room_id'] . "'>Duyệt</a>
+    echo "<td><a href='accept.php?id=" . $row['room_id'] . "'>Duyệt</a> |
     <a href='deny.php?id=" . $row['room_id'] . "'>Từ chối</a>
     </td>";
     echo "</tr>";

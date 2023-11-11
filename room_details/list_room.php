@@ -2,9 +2,19 @@
 @include '../config.php';
 session_start();
 
-$query = "SELECT * FROM room_form";
-$result = mysqli_query($conn, $query);
+if (isset($_POST['search_submit'])) {
+    $search_value = mysqli_real_escape_string($conn, $_POST['search']);
+    $query = "SELECT * FROM room_form WHERE room_number LIKE '%$search_value%'";
+} else {
+    $query = "SELECT * FROM room_form";
+}
 
+$sql = "SELECT room_form.*, COUNT(register.user_id) AS registered_users
+        FROM room_form
+        LEFT JOIN register ON room_form.room_id = register.room_id
+        GROUP BY room_form.room_id";
+
+$result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +27,34 @@ $result = mysqli_query($conn, $query);
     <title>Chi tiết phòng</title>
 
     <link rel="stylesheet" href="../css/room.css";>
+    <style>
+        #find {
+            text-align: right;
+        }
+   #find input[type="text"] {
+    padding: 5px;
+    width: 350px;
+    margin-right: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: auto;
+}
+
+#find input[type="submit"] {
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: green;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: auto;
+    border: 2px solid black;
+}
+
+    </style>
 </head>
 
 <body>
@@ -24,6 +62,12 @@ $result = mysqli_query($conn, $query);
     <div class="dashboard-container">
         <h3>Danh sách phòng</h3>
         <br>
+
+        <form action="" method="post" id="find">
+                <input type="text" name="search" placeholder="Tìm kiếm theo mã phòng">
+                <input type="submit" name="search_submit" value="Tìm kiếm">
+            </form>
+
         <a href="add_room.php">Thêm phòng</a>
         <table>
   <tr>
@@ -32,6 +76,7 @@ $result = mysqli_query($conn, $query);
     <th>Loại phòng</th>
     <th>Sức chứa</th>
     <th>Mô tả phòng</th>
+    <th>Số người đăng ký</th>
     <th>Giá phòng</th>
     <th>Chức năng</th>
   </tr>
@@ -43,9 +88,10 @@ $result = mysqli_query($conn, $query);
     echo "<td>" . $row['room_type'] . "</td>";
     echo "<td>" . $row['room_capacity'] . "</td>";
     echo "<td>" . $row['room_description'] . "</td>";
+    echo "<td>" . $row['registered_users'] . "</td>";
     echo "<td>" . $row['room_price'] . "</td>";
-    echo "<td><a href='edit_room.php?id=" . $row['room_id'] . "'>Edit</a>
-    <a href='delete_room.php?id=" . $row['room_id'] . "'>Delete</a>
+    echo "<td><a href='edit_room.php?id=" . $row['room_id'] . "'>Chỉnh sửa </a> |
+    <a href='delete_room.php?id=" . $row['room_id'] . "'>Xóa</a>
     </td>";
     echo "</tr>";
 }

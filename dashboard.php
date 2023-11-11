@@ -76,7 +76,7 @@ if (mysqli_num_rows($resultApprove) > 0) {
 
     <div class="approve-dashboard">
             <h3>ĐƠN DUYỆT</h3>
-            <p><?php echo $approveCount; ?> phòng đã được phê duyệt!</p>
+            <p>Có <?php echo $approveCount; ?> đơn duyệt</p>
             <a href="room_details/list_room.php" class="dashboard-link">Quản lý phòng</a>
         </div>
 

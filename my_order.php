@@ -41,6 +41,8 @@ $result = mysqli_query($conn, $query);
                 <th>Sức chứa</th>
                 <th>Giá phòng</th>
                 <th>Trạng thái</th>
+                <th>Chức năng</th>
+
             </tr>
             <?php
             $stt = 1;
@@ -65,6 +67,9 @@ $result = mysqli_query($conn, $query);
                     echo "Không xác định";
                 }
                 echo "</td>";
+                echo "<td><a href='pay.php?id=" . $row['room_id'] . "'>Thanh Toán</a>
+                </td>";
+
                 echo "</tr>";
             }
             ?>
