@@ -28,31 +28,44 @@ $result = mysqli_query($conn, $sql);
 
     <link rel="stylesheet" href="../css/room.css";>
     <style>
+        .dashboard-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
         #find {
             text-align: right;
         }
-   #find input[type="text"] {
-    padding: 5px;
-    width: 350px;
-    margin-right: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
-    font-size: 16px;
-    display: inline-block;
-    margin-left: auto;
-}
+        #find input[type="text"] {
+            padding: 5px;
+            width: 350px;
+            margin-right: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
+            margin-left: auto;
+        }
 
-#find input[type="submit"] {
-    padding: 5px;
-    width: 100px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: green;
-    font-size: 16px;
-    display: inline-block;
-    margin-left: auto;
-    border: 2px solid black;
-}
+        #find input[type="submit"] {
+            padding: 5px;
+            width: 100px;
+            border-radius: 5px;
+            color: #fff;
+            background-color: green;
+            font-size: 16px;
+            display: inline-block;
+            margin-left: auto;
+            border: 2px solid black;
+        }
+        h3 {
+            font-size: 24px;
+        }
 
     </style>
 </head>

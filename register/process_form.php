@@ -102,8 +102,6 @@ if (isset($_POST['room_id'])) {
         $start_time = mysqli_real_escape_string($conn, $_POST['start_time']);
         $end_time = mysqli_real_escape_string($conn, $_POST['end_time']);
 
-        $start_time = date('d/m/Y', strtotime($start_time));
-        $end_time = date('d/m/Y', strtotime($end_time));
     
         $sql = "INSERT INTO register (user_id, room_id, full_name, student_id, phone, email, room_price, room_number, room_capacity, start_time, end_time) 
                 VALUES ('$id_user', '$id_phong', '$full_name', '$student_id', '$phone', '$email','$room_price','$room_number','$room_capacity','$start_time', '$end_time')";

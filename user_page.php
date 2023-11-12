@@ -21,6 +21,9 @@ if (!isset($_SESSION['user_name'])) {
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+
+    </style>
 
 </head>
 
@@ -28,17 +31,8 @@ if (!isset($_SESSION['user_name'])) {
 
     <?php include 'navbar/usernavbar.php'; ?>
     <br>
-
-    <div class="container">
-
-        <div class="content">
-            <h3>hi, <span>user</span></h3>
-            <h1>welcome <span><?php echo $_SESSION['user_name'] ?></span></h1>
-            <p>Đăng nhập thành công!</p>
-            <a href="logout.php" class="btn">logout</a>
-        </div>
-
-    </div>
+    
+    <?php include 'index.php'; ?>
 
 </body>
 <?php include '../KTX/footer.php'; ?>

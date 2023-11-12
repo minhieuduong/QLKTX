@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-$query = "SELECT * FROM register WHERE user_id = $user_id";
+$query = "SELECT *, CASE WHEN payment_status = 0 THEN 'Chưa thanh toán' WHEN payment_status = 1 THEN 'Đã thanh toán' ELSE 'Không xác định' END AS payment_status_text FROM register WHERE user_id = $user_id";
 $result = mysqli_query($conn, $query);
 
 ?>
@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $query);
 </head>
 
 <body>
-<?php include 'navbar/usernavbar.php' ?>;
+    <?php include 'navbar/usernavbar.php' ?>;
     <div class="dashboard-container">
         <h3>Danh sách phòng đã đăng ký</h3>
         <table>
@@ -41,8 +41,8 @@ $result = mysqli_query($conn, $query);
                 <th>Sức chứa</th>
                 <th>Giá phòng</th>
                 <th>Trạng thái</th>
+                <th>Trạng thái thanh toán</th>
                 <th>Chức năng</th>
-
             </tr>
             <?php
             $stt = 1;
@@ -67,9 +67,8 @@ $result = mysqli_query($conn, $query);
                     echo "Không xác định";
                 }
                 echo "</td>";
-                echo "<td><a href='pay.php?id=" . $row['room_id'] . "'>Thanh Toán</a>
-                </td>";
-
+                echo "<td>" . $row['payment_status_text'] . "</td>";
+                echo "<td><a href='payment/pay.php?id=" . $row['room_id'] . "'>Thanh Toán</a></td>";
                 echo "</tr>";
             }
             ?>

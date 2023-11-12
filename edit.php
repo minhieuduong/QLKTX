@@ -86,7 +86,7 @@ body {
 .form-btn {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #3498db;
+    background-color: #2ecc71;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -94,7 +94,7 @@ body {
 }
 
 .form-btn:hover {
-    background-color: #2980b9;
+    background-color: green;
 }
 
 
@@ -121,7 +121,7 @@ select {
 }
 
 input[type="submit"] {
-    background-color: #2ecc71;
+    background-color: black;
     color: #fff;
     cursor: pointer;
 }

@@ -27,7 +27,7 @@
         <li><a href="../../KTX/my_order.php" id="test">Đơn của tôi</a>
         <li><a href="javascript:void(0)"><?php echo $_SESSION['user_name']; ?></a>
             <ul class="user-menu">
-                <li><a href="../../KTX/show.php">View User</a></li>
+                <li><a href="../../KTX/edit_profile.php">View User</a></li>
                 <li><a href="../../KTX/logout.php">Đăng xuất</a></li>
             </ul>
         </li>
