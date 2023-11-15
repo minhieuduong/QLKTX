@@ -3,8 +3,7 @@
 session_start();
 
 // Truy vấn lấy thông tin từ cả hai bảng
-$query = "SELECT room_form.*, COUNT(register.user_id) AS registered_users
-          FROM room_form
+$query = "SELECT room_form.*, COUNT(register.user_id) AS registered_users FROM room_form
           LEFT JOIN register ON room_form.room_id = register.room_id
           GROUP BY room_form.room_id";
 $result = mysqli_query($conn, $query);

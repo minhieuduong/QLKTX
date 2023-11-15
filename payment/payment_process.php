@@ -14,17 +14,16 @@ if (isset($_POST['pay_submit'])) {
     // Kiểm tra và xác nhận thanh toán
     // ...
 
-    // Hiển thị alert message box để xác nhận thanh toán
     echo '<script>';
     echo 'var confirmed = confirm("Bạn có chắc chắn muốn thanh toán không?");';
     echo 'if (confirmed) {';
-    echo '   window.location.href = "payment_process.php";'; // Chuyển hướng đến trang xử lý thanh toán nếu được xác nhận
+    echo '   window.location.href = "payment_process.php";'; 
     echo '} else {';
-    echo '   window.history.back();'; // Quay lại trang trước nếu bị từ chối
+    echo '   window.history.back();'; 
     echo '}';
     echo '</script>';
 } else {
     echo "Đơn của bạn đã thanh toán trước hoặc chưa được duyệt!";
-    echo '<a href="../my_order.php">Quay lại</a>';
+    echo '<a href="../register/my_order.php">Quay lại</a>';
 }
 ?>

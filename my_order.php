@@ -68,7 +68,18 @@ $result = mysqli_query($conn, $query);
                 }
                 echo "</td>";
                 echo "<td>" . $row['payment_status_text'] . "</td>";
-                echo "<td><a href='payment/pay.php?id=" . $row['room_id'] . "'>Thanh Toán</a></td>";
+                echo "<td>";
+                
+                // Hiển thị nút thanh toán nếu chưa thanh toán và chưa hủy
+                if ($row['payment_status'] == 0 && $row['status'] != -1) {
+                    echo "<a href='payment/pay.php?id=" . $row['room_id'] . "'>Thanh Toán</a>";
+                } elseif ($row['payment_status'] == 1 && $row['cancel_status'] == 0) {
+                    echo "<a href='register/cancel.php?id=" . $row['room_id'] . "'>Hủy phòng</a>";
+                } else {
+                    echo "Không có";
+                }
+                
+                echo "</td>";
                 echo "</tr>";
             }
             ?>

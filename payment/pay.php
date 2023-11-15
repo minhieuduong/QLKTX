@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="../css/pay.css">
 <?php
+// pay.php
+
 @include '../config.php';
 session_start();
 
@@ -8,49 +9,35 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-
-
-$user_id = $_SESSION['user_id'];
-
 if (isset($_GET['id'])) {
     $room_id = mysqli_real_escape_string($conn, $_GET['id']);
+    $user_id = $_SESSION['user_id'];
 
-    // Kiểm tra trạng thái của phòng
+    // Kiểm tra xem user có quyền thanh toán cho phòng này hay không
     $query = "SELECT * FROM register WHERE user_id = $user_id AND room_id = $room_id";
     $result = mysqli_query($conn, $query);
 
-    if ($result) {
+    if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
-        if ($row['status'] == 0) {
-            echo "Phòng chưa được duyệt, không thể thanh toán.";
-        } elseif ($row['status'] == 1) {
-            // Hiển thị thông tin phòng và gọi hàm thanh toán
-            $room_number = $row['room_number'];
-            $room_capacity = $row['room_capacity'];
-            $room_price = $row['room_price'];
-            $start_time = date("d-m-Y", strtotime($row['start_time']));
-            $end_time = date("d-m-Y", strtotime($row['end_time']));
+        // Kiểm tra trạng thái thanh toán
+        if ($row['payment_status'] == 0) {
+            // Đánh dấu là đã thanh toán trong cơ sở dữ liệu
+            $update_query = "UPDATE register SET payment_status = 1 WHERE room_id = $room_id";
+            $update_result = mysqli_query($conn, $update_query);
 
-            echo "<h3>Thanh toán cho phòng $room_number</h3>";
-            echo "<p>Sức chứa: $room_capacity</p>";
-            echo "<p>Giá phòng: $room_price</p>";
-            echo "<p>Ngày bắt đầu: $start_time</p>";
-            echo "<p>Ngày kết thúc: $end_time</p>";
-
-            echo '<form action="payment_process.php" method="post">';
-            echo '<input type="hidden" name="room_id" value="' . $room_id . '">';
-            echo '<input type="submit" name="pay_submit" value="Thanh toán">';
-            echo '</form>';
-        } elseif ($row['status'] == -1) {
-            echo "Phòng đã bị từ chối, không thể thanh toán.";
+            if ($update_result) {
+                echo "Thanh toán thành công!";
+                echo '<a href="../my_order.php">Quay lại</a>';
+                
+            } else {
+                echo "Có lỗi xảy ra khi cập nhật trạng thái thanh toán.";
+            }
         } else {
-            echo "Trạng thái phòng không xác định.";
+            echo "Phòng đã được thanh toán trước đó.";
+            echo '<a href="../my_order.php">Quay lại</a>';
         }
-    } else {
-        echo "Lỗi truy vấn cơ sở dữ liệu.";
     }
-} else {
-    echo "Không có thông tin phòng để thanh toán.";
 }
+
 ?>
